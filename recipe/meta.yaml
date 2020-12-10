@@ -1,0 +1,25 @@
+{% set name = "mariadb" %}
+{% set version = "10.5.8" %}
+
+package:
+  name: {{ name|lower }}-server
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}-linux-x86_64.tar.gz
+  url: https://mirrors.nxthost.com/{{ name }}//{{ name }}-{{ version }}/bintar-linux-x86_64/{{ name }}-{{ version }}-linux-x86_64.tar.gz
+  sha256: 01b2100b4e90da3926d519e0fa4fadb0587b596188fac2f7b0f06ba1eab81de2
+
+build:
+  number: 0
+
+test:
+  commands:
+    - mysql --help
+    - mysqld --help
+
+about:
+  home: https://mariadb.org
+  summary: MariaDB is a community-developed fork of the MySQL relational database management system intended to remain free under the GNU GPL.
+  license: GPL
+
